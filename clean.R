@@ -8,6 +8,7 @@ get_clean_data <- function(){
     
     # Pclass should be Factors
     data$pclass <- as.factor(data$pclass)
+    data$survived <- as.logical(data$survived)
     
     data    
 }

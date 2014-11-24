@@ -11,11 +11,14 @@ p <- ggplot(data) + theme_minimal()
 sum(data$survived) # 342
 
 # Survived by Sex
-p + geom_bar(aes(sex,survived),stat="identity") +
+p + geom_bar(aes(as.logical(survived),fill = sex),
+             stat="bin", # the count of cases in each group (Survived/Not)
+             position="dodge") +
     labs(title = "Survived by Gender")
 
 # Social Class vs Sex
-p + geom_bar(aes(pclass, fill=sex), stat = "bin")
+p + geom_bar(aes(pclass, fill=sex), stat = "bin") + 
+    labs(title = "Social Class vs Sex")
 
 # Age Histogram
 p + geom_histogram(aes(age)) + geom_vline(aes(xintercept=mean(age, na.rm=T)),
@@ -24,17 +27,14 @@ p + geom_histogram(aes(age)) + geom_vline(aes(xintercept=mean(age, na.rm=T)),
 # Age Histogram by Pclass
 p + geom_histogram(aes(x = age, fill = pclass))
 
-# Survived by Social Class and Sex
-class_vs_gender <- with(data, 
-                        aggregate(survived,by=list(sex,pclass), FUN = sum))
-names(class_vs_gender) <- c("sex", "pclass", "survived")plot
-ggplot(class_vs_gender) + geom_bar(aes(x=pclass,y=survived, fill=sex), 
-                                   stat = "identity")
-
 # Basic Plot of Sex vs Pclass vs Survived
 # Conclusion: Almost all females from 1st Class survived
 table <- table(data$sex,data$pclass,data$survived)
 plot(table, main = "Sex, Pclass, Survived")
+
+# Proportion of People who Survive by Sex
+p + geom_bar(aes(survived, fill = sex), stat="bin", position="fill")
+
 
 # Proportion of People who Live by Sex and Class
 prop.table(ftable(data$sex,data$pclass,data$survived),1) * 100
