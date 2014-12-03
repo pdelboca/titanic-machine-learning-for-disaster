@@ -1,11 +1,11 @@
 setwd("~/Repos/titanic-machine-learning-for-disaster/")
 
-load_train <- function(){
+LoadTrain <- function(){
     train <- read.csv("./data/train.csv")
     train
 }
 
-load_test <- function(){
+LoadTest <- function(){
     test <- read.csv("./data//test.csv")
     test
 }

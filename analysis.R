@@ -38,11 +38,11 @@ p + geom_bar(aes(survived, fill = sex), stat="bin", position="fill")
 
 # Proportion of People who Live by Sex and Class
 prop.table(ftable(data$sex,data$pclass,data$survived),1) * 100
-survival_proportions <- as.data.frame(prop.table(ftable(data$sex,data$pclass,data$survived),1) * 100)
-names(survival_proportions) <- c("sex","pclass","survived","freq")
-survival_proportions$survived <- gsub(0,"Died",survival_proportions$survived)
-survival_proportions$survived <- gsub(1,"Lived",survival_proportions$survived)
+survival.proportions <- as.data.frame(prop.table(ftable(data$sex,data$pclass,data$survived),1) * 100)
+names(survival.proportions) <- c("sex","pclass","survived","freq")
+survival.proportions$survived <- gsub(0,"Died",survival.proportions$survived)
+survival.proportions$survived <- gsub(1,"Lived",survival.proportions$survived)
 
-ggplot(survival_proportions) + geom_bar(aes(x=sex,y=freq,fill=survived),stat="identity") + 
+ggplot(survival.proportions) + geom_bar(aes(x=sex,y=freq,fill=survived),stat="identity") + 
     facet_grid(~pclass) + 
     labs(title = "Proportion of People who lived by Sex and Class")
