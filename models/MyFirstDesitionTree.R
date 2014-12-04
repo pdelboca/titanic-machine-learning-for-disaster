@@ -22,6 +22,8 @@ MyFirstDesitionTree <- function(){
   prediction[prediction == 1] <- 0
   prediction[prediction == 2] <- 1
   submit <- data.frame(PassengerId = test$passengerid, Survived = prediction)
-  write.csv(submit, file = "./models/myfirstdesitiontree.csv", row.names = FALSE)
+  write.csv(submit, file = "./models/csv/MyFirstDesitionTree.csv", row.names = FALSE)
 
 }
+
+MyFirstDesitionTree()

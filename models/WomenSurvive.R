@@ -6,5 +6,5 @@ WomenSurvive <- function(){
   test$Survived[test$Sex == 'female'] <- 1
   
   submit <- data.frame(PassengerId = test$PassengerId, Survived = test$Survived)
-  write.csv(submit, file = "./models/womensurvived.csv", row.names = FALSE)
+  write.csv(submit, file = "./models/csv/WomenSurvived.csv", row.names = FALSE)
 }

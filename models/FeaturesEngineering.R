@@ -52,5 +52,6 @@ FeaturesEngineering <- function(){
   prediction[prediction == 1] <- 0
   prediction[prediction == 2] <- 1
   submit <- data.frame(PassengerId = test$PassengerId, Survived = prediction)
-  write.csv(submit, file = "./models/featuresengineering.csv", row.names = FALSE)
+  write.csv(submit, file = "./models/csv/FeaturesEngineering.csv", row.names = FALSE)
 }
+FeaturesEngineering()

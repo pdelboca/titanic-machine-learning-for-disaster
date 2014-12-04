@@ -73,7 +73,7 @@ MyPersonalFeaturesEngineering <- function(){
   train <- combi[1:891,]
   test <- combi[892:1309,]
   
-  fit <- rpart(Survived ~ Pclass + Sex + Age + Child + SibSp + Parch + Fare + Embarked + Title + FamilySize + FamilyID,
+  fit <- rpart(Survived ~ Pclass + Sex + Age + Child + git coSibSp + Parch + Fare + Embarked + Title + FamilySize + FamilyID,
                data=train, method="class")
   fancyRpartPlot(fit)
   
